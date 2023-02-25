@@ -1,8 +1,6 @@
 import json
 import re
 from urllib import error, request
-from concurrent.futures import ThreadPoolExecutor
-import threading
 
 
 class base_poc:
@@ -47,18 +45,24 @@ class base_poc:
         return False
 
     def start(self):
-        if self.fofa_filter():
+        try:
+            if self.fofa_filter():
+                return False
+            if self.pyload():
+                return True
             return False
-        if self.pyload():
-            return True
-        return False
+        except Exception as e:
+            self.error()
+
+    def error(self):
+        print(self._url + ':请求出错\n原因:' + srt(e), end='')
 
     def pyload(self):
         pass
 
-    def succeed(self, queue):
+    def succeed(self):
         print("漏洞验证成功: " + self._url + '\n' ,end='')
         return _url
 
-    def failed(self, queue):
+    def failed(self):
         return ''
